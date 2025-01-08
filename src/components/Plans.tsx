@@ -55,7 +55,7 @@ export default function Plans() {
       <div className="section-container max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold mb-4">Plans</h2>
+          <h2 className="text-5xl font-bold mb-4">Discover Our Plans and Pricing</h2>
           <p className="text-xl text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
 
           {/* Toggle */}
