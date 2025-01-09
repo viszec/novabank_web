@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Acorn Finance AI",
-  description: "Acorn Finance AI is a NextJS boilerplate for building AI SaaS startups.",
+  title: "Acorn Ledger",
+  description: "Access all your accounts in one elegant dashboard, with seamless cross-bank integration and bank-grade security.",
 };
 
 export default function RootLayout({

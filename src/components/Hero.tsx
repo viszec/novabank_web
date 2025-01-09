@@ -1,10 +1,12 @@
+"use client";
+
 import { Button } from "./ui/button";
 import Image from 'next/image'
 import { DotMatrix } from "./ui/dot-matrix";
 
 export default function Hero() {
   return (
-    <div id="home" className="section-wrapper bg-beige">
+    <div id="home" className="section-wrapper bg-beige mt-24">
       <div className="absolute inset-0 overflow-hidden">
         <DotMatrix 
           className="absolute left-0 w-2/5 h-full pointer-events-none" 
@@ -17,8 +19,6 @@ export default function Hero() {
       </div>
       <div className="section-container relative">
         {/* Header space placeholder */}
-        <div className="h-[100px]" />
-        
         <section className="relative pt-36 pb-16 md:pt-40 md:pb-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -42,9 +42,9 @@ export default function Hero() {
               </h1>
 
               {/* Subtitle */}
-              <div className="space-y-2 mb-8 text-gray-500 animate-slide-up opacity-0 animation-delay-200">
+              <div className="mb-8 text-gray-500 animate-slide-up opacity-0 animation-delay-200">
                 <p className="text-lg">
-                  Acorn is a Next.js boilerplate for modern financial
+                  Acorn Ledger is a Next.js boilerplate for modern financial
                   management.
                 </p>
                 <p className="text-lg">
