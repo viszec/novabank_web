@@ -67,17 +67,17 @@ export function ContactTemplate({
   return (
     <>
       <Header />
-      <main id="contact" className="section-wrapper bg-gray-50 pt-32 pb-16">
-        <div className="section-container min-h-screen mt-32">
+      <main id="contact" className="section-wrapper bg-gray-50 pt-14 pb-16">
+        <div className="section-container min-h-screen mt-16">
           {/* Header Section */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               {content.title}
             </h1>
             <p className="text-lg text-gray-600 mt-6 mb-12">
               {content.description}
             </p>
-            <div className="relative w-full max-w-7xl mx-auto py-8">
+            <div className="relative w-full max-w-7xl mx-auto py-6">
               <Image
                 src={content.image.src}
                 alt={content.image.alt}

@@ -100,10 +100,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-wrapper pt-32 pb-16 relative">
+    <section id="about" className="section-wrapper pt-32 pb-4 relative">
       {/* Background Grid Pattern - Right Half */}
       <div
-        className="absolute right-0 w-1/3 h-1/4 inset-y-0 bg-[radial-gradient(#e4d5ff_2.5px,transparent_2.5px)] bg-[size:35px_35px]"
+        className="absolute right-0 w-1/3 h-1/5 inset-y-0 bg-[radial-gradient(#e4d5ff_2px,transparent_2px)] bg-[size:30px_30px]"
         style={{
           maskImage: "linear-gradient(to left, white, transparent)",
           WebkitMaskImage: "linear-gradient(to left, white, transparent)",
@@ -119,8 +119,8 @@ export default function About() {
           }`}
         >
           <p className="mb-8 text-4xl font-bold">
-            <span className="font-garamond italic font-bold text-5xl text-purple-600">Acorn Ledger </span>
-            <span className="text-gray-700">
+            <span className="font-garamond italic font-bold text-4xl text-purple-600">Acorn Ledger </span>
+            <span className="text-gray-700 text-3xl">
               {" "}
               is built on the shoulders of giants
             </span>
@@ -132,6 +132,9 @@ export default function About() {
                   key={`${logo.alt}-${index}`} 
                   {...logo} 
                   alt={logo.alt}
+                  width={Math.floor(logo.width * 0.8)}
+                  height={Math.floor(logo.height * 0.8)}
+                  className="object-contain"
                 />
               ))}
             </div>
@@ -139,12 +142,12 @@ export default function About() {
         </div>
 
         {/* What is Acorn Section */}
-        <div className="section-container mx-28">
+        <div className="section-container">
           <div 
             ref={whatIsRef}
             className="grid md:grid-cols-2 gap-24 items-center pt-10 pb-32"
           >
-            <div className={`card-gradient rounded-2xl w-[580px] h-[460px] opacity-0 ${
+            <div className={`card-gradient rounded-2xl w-[580px] h-[400px] opacity-0 ${
               whatIsInView ? 'animate-slide-in' : ''
             }`}>
               <Image
@@ -152,17 +155,17 @@ export default function About() {
                 alt="Acorn Robot"
                 className="w-full h-full object-cover rounded-2xl"
                 width={580}
-                height={460}
+                height={400}
                 loading="lazy"
               />
             </div>
             <div className={`space-y-6 opacity-0 ${
               whatIsInView ? 'animate-slide-in animation-delay-200' : ''
             }`}>
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-2xl font-bold">
                 Redefining Personal Finance Management
               </h2>
-              <p className="text-gray-600 text-xl">
+              <p className="text-gray-600 text-base">
                 Acorn Ledger is a Next.js-powered financial management platform
                 that simplifies your banking experience. Built with modern
                 financial integration capabilities and enterprise-grade
@@ -173,10 +176,10 @@ export default function About() {
                   <div key={feature.title} className="flex items-start gap-4">
                     {feature.icon}
                     <div>
-                      <h3 className="font-semibold text-base mb-1">
+                      <h3 className="font-semibold text-sm mb-1">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 text-base">
+                      <p className="text-gray-600 text-sm">
                         {feature.description}
                       </p>
                     </div>
@@ -189,7 +192,7 @@ export default function About() {
           {/* Why Choose Acorn Section */}
           <div 
             ref={whyChooseRef}
-            className="grid md:grid-cols-2 gap-28 items-center pb-28"
+            className="grid md:grid-cols-2 gap-12 items-center pb-28"
           >
             <div className={`space-y-6 opacity-0 ${
               whyChooseInView ? 'animate-slide-in' : ''
@@ -199,10 +202,10 @@ export default function About() {
                   Benefits
                 </span>
               </div>
-              <h2 className="text-3xl font-bold">
+              <h2 className="text-2xl font-bold">
                 Experience Financial Freedom Like Never Before
               </h2>
-              <p className="text-gray-600 text-xl">
+              <p className="text-gray-600 text-base">
                 Experience modern financial management with a platform designed
                 for simplicity and efficiency.
               </p>
@@ -211,10 +214,10 @@ export default function About() {
                   <div key={benefit.title} className="flex items-start gap-4">
                     {benefit.icon}
                     <div>
-                      <h3 className="font-semibold text-lg mb-1">
+                      <h3 className="font-semibold text-sm mb-1">
                         {benefit.title}
                       </h3>
-                      <p className="text-gray-600 text-base">
+                      <p className="text-gray-600 text-sm">
                         {benefit.description}
                       </p>
                     </div>
@@ -222,7 +225,7 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className={`card-gradient mt-14 rounded-2xl w-[580px] h-[460px] opacity-0 ${
+            <div className={`card-gradient mt-14 rounded-2xl w-[560px] h-[400px] opacity-0 ${
               whyChooseInView ? 'animate-slide-in animation-delay-200' : ''
             }`}>
               <Image
@@ -230,7 +233,7 @@ export default function About() {
                 alt="Acorn City"
                 className="item-w-full h-full object-cover rounded-2xl"
                 width={580}
-                height={460}
+                height={400}
                 loading="lazy"
               />
             </div>

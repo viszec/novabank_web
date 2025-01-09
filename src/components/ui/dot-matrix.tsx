@@ -20,7 +20,7 @@ interface DotPosition {
 export function DotMatrix({
   className = "",
   dotColor = "#e4d5ff",
-  dotSize = 2.5,
+  dotSize = 2,
   gridSize = 35,
   maxHighlightDots = 10
 }: DotMatrixProps) {
@@ -64,7 +64,7 @@ export function DotMatrix({
 
     updateDots();
 
-    const intervalId = setInterval(updateDots, 5000);
+    const intervalId = setInterval(updateDots, 1000);
 
     const resizeObserver = new ResizeObserver(updateDots);
     const container = document.querySelector(`.${className.split(' ')[0]}`);

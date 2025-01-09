@@ -1,8 +1,8 @@
 export const termsOfServiceContent = {
   title: "Terms of Service",
   description: "Terms of Service for Acorn Ledger - Please read these terms carefully before using our service.",
-  lastUpdated: "March 15, 2024",
-  contactEmail: "legal@acornledger.io",
+  lastUpdated: "Jan 10, 2025",
+  contactEmail: "hello@acornledger.io",
   sections: [
     {
       id: "acceptance",

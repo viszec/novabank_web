@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="mb-12">
             <Logo />
-            <p className="mt-4 text-base text-gray-600 max-w-[80%]">
+            <p className="mt-4 text-base text-gray-600 max-w-[60%]">
               Your personal finance companion. Track, manage, and grow your
               wealth with smart insights and automated bookkeeping.
             </p>
@@ -77,7 +77,7 @@ export default function Footer() {
                   <li key={item.title}>
                     <Link
                       href={item.href}
-                      className="text-base text-gray-600 hover:text-purple-600 transition-colors"
+                      className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
                     >
                       {item.title}
                     </Link>
@@ -96,7 +96,7 @@ export default function Footer() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="text-purple-600 hover:text-purple-400 transition-colors text-sm font-semibold"
+                  className="text-purple-700 hover:text-purple-400 transition-colors text-xs"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -104,7 +104,7 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="text-base text-gray-600">
+            <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} • Acorn Ledger All rights reserved.
             </p>
             <div className="flex items-center gap-6">
@@ -112,7 +112,7 @@ export default function Footer() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                  className="text-xs text-gray-600 hover:text-purple-600 transition-colors"
                 >
                   {item.title}
                 </Link>
