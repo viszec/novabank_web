@@ -19,13 +19,13 @@ export default function Header() {
       {/* Placeholder div to prevent content jump */}
       <div className="h-[96px] w-full" />
       
-      <header className="fixed top-0 left-0 right-0 h-[96px] bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+      <header className="fixed top-0 left-0 right-0 h-[96px] bg-white backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
           <Link href={ROUTES.home} className="flex items-center">
             <Logo />
           </Link>
           
-          <Navigation />
+          <div className="pt-4"><Navigation /></div>
           
           <div className="flex items-center gap-4">
             <TooltipProvider>
@@ -46,7 +46,7 @@ export default function Header() {
             <Link href={ROUTES.auth.signUp}>
               <Button 
                 variant="ghost"
-                className="text-base font-medium rounded-full bg-purple-600 text-white h-12 px-6 border border-purple-600 hover:bg-white hover:text-purple-600 transition-all duration-300"
+                className="text-sm font-medium rounded-full bg-purple-600 text-white h-10 px-4 border border-purple-600 hover:bg-white hover:text-purple-600 transition-all duration-300"
               >
                 Get Started
               </Button>

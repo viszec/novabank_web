@@ -1,6 +1,6 @@
 import type { AppRoute, NavigationItem, FooterNavigation } from '@/types/navigation';
 
-// Core navigation items that represent main sections
+// Core navigation items that represent main sections in landing page
 const MAIN_NAVIGATION = [
   { title: 'Home', id: 'home' },
   { title: 'About', id: 'about' },
@@ -11,12 +11,6 @@ const MAIN_NAVIGATION = [
 // Generate routes with proper typing
 export const ROUTES = {
   home: '/' as AppRoute,
-  ...Object.fromEntries(
-    MAIN_NAVIGATION.map(item => [
-      item.id,
-      `/${item.id}` as AppRoute
-    ])
-  ),
   auth: {
     signIn: process.env.NEXT_PUBLIC_APP_SIGN_IN_URL as AppRoute,
     signUp: process.env.NEXT_PUBLIC_APP_SIGN_UP_URL as AppRoute,
@@ -27,11 +21,11 @@ export const ROUTES = {
   privacyPolicy: '/privacy-policy' as AppRoute,
 } as const;
 
-// Navigation items with section indicators
+// Navigation items with section indicators for landing page
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   ...MAIN_NAVIGATION.map(item => ({
     title: item.title,
-    href: ROUTES[item.id as keyof typeof ROUTES] as AppRoute,
+    href: `/#${item.id}` as AppRoute,  // use hash to link to section
     isSection: true
   })),
   { title: 'Contact', href: ROUTES.contact }
@@ -43,7 +37,7 @@ export const FOOTER_NAVIGATION: FooterNavigation = {
     title: 'Company',
     items: MAIN_NAVIGATION.slice(1).map(item => ({
       title: item.title,
-      href: `/${item.id}` as AppRoute,
+      href: `/#${item.id}` as AppRoute, 
       isSection: true
     }))
   },
