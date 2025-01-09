@@ -1,7 +1,7 @@
 export const privacyPolicyContent = {
   title: "Privacy Policy",
   description: "Privacy Policy for Acorn Ledger - Learn how we collect, use, and protect your personal information.",
-  lastUpdated: "March 15, 2024",
+  lastUpdated: "Jan 10, 2025",
   contactEmail: "privacy@acornledger.io",
   sections: [
     {

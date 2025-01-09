@@ -55,19 +55,19 @@ export default function Plans() {
       <div className="section-container max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold mb-4">Plans</h2>
-          <p className="text-xl text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
+          <h2 className="text-4xl font-bold mb-4">Finding Our Plans and Pricing</h2>
+          <p className="text-lg text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
 
           {/* Toggle */}
           <div className="mt-8 inline-flex items-center bg-gray-200 rounded-lg p-1">
             <button
-              className={`px-4 py-2 rounded-lg ${!isAnnual ? 'bg-white shadow' : ''}`}
+              className={`px-4 py-2 text-sm rounded-lg ${!isAnnual ? 'bg-white shadow' : ''}`}
               onClick={() => setIsAnnual(false)}
             >
               Monthly
             </button>
             <button
-              className={`px-4 py-2 rounded-lg flex items-center gap-2 ${isAnnual ? 'bg-white shadow' : ''}`}
+              className={`px-4 py-2 text-sm rounded-lg flex items-center gap-2 ${isAnnual ? 'bg-white shadow' : ''}`}
               onClick={() => setIsAnnual(true)}
             >
               Annually
@@ -77,7 +77,7 @@ export default function Plans() {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -93,10 +93,10 @@ export default function Plans() {
               <h3 className="text-xl font-semibold mb-4">{plan.name}</h3>
 
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-3xl font-bold">
+                <span className="text-2xl font-bold">
                   ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
                 </span>
-                <span className="text-gray-600">USD</span>
+                <span className="text-gray-600 text-sm">USD</span>
               </div>
 
               <div className="mb-6">
@@ -104,23 +104,26 @@ export default function Plans() {
                   {plan.name === "Standard" ? "Everything in Starter, plus:" :
                     plan.name === "Premium" ? "Everything in Standard, plus:" : ""}
                 </p>
-                <ul className="space-y-4">
+                <ul className="space-y-2">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600">{feature}</span>
+                      <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <Button className={`w-full py-6 text-base font-semibold rounded-full mb-6 ${plan.isPopular
-                  ? 'bg-purple-500 text-white border-2 border-purple-500 hover:bg-white hover:text-purple-500 transition-all duration-300'
-                  : 'border-2 bg-white text-purple-500 border-purple-400 hover:border-purple-800 hover:text-purple-500 hover:bg-white transition-all duration-300'
-                } transition-all duration-300`}>
-                Get Plan
+              <Button 
+                className={`w-[80%] mx-auto flex items-center justify-center py-5 text-sm font-semibold gap-2 rounded-full mb-6 ${
+                  plan.isPopular
+                    ? 'bg-purple-500 text-white border-2 border-purple-500 hover:bg-white hover:text-purple-500 transition-all duration-300'
+                    : 'border-2 bg-white text-purple-500 border-purple-400 hover:border-purple-800 hover:text-purple-500 hover:bg-white transition-all duration-300'
+                } transition-all duration-300`}
+              >
+                <span className="text-center">Get Plan</span>
               </Button>
 
               {/* TODO: Add a button to switch to the annual plan */}

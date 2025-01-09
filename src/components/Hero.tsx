@@ -6,13 +6,13 @@ import { DotMatrix } from "./ui/dot-matrix";
 
 export default function Hero() {
   return (
-    <div id="home" className="section-wrapper bg-beige mt-24">
+    <div id="home" className="section-wrapper bg-beige">
       <div className="absolute inset-0 overflow-hidden">
         <DotMatrix 
-          className="absolute left-0 w-2/5 h-full pointer-events-none" 
+          className="absolute left-0 w-2/5 h-full pointer-events-none -mt-2" 
           dotColor="#e4d5ff"
-          dotSize={2.5}
-          gridSize={35}
+          dotSize={2}
+          gridSize={30}
           highlightColor="#9333ea"
           maxHighlightDots={10}
         />
@@ -43,11 +43,11 @@ export default function Hero() {
 
               {/* Subtitle */}
               <div className="mb-8 text-gray-500 animate-slide-up opacity-0 animation-delay-200">
-                <p className="text-lg">
+                <p className="text-base">
                   Acorn Ledger is a Next.js boilerplate for modern financial
                   management.
                 </p>
-                <p className="text-lg">
+                <p className="text-base">
                   Access all your accounts in one elegant dashboard, with
                   seamless cross-bank integration and bank-grade security.
                 </p>
@@ -55,7 +55,7 @@ export default function Hero() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up opacity-0 animation-delay-300">
-                <Button className="inline-flex items-center gap-2 px-8 py-6 border rounded-full bg-purple-600 text-white text-base font-semibold shadow-none hover:border-purple-400 hover:border-1 hover:bg-white hover:text-purple-600 transition-all duration-300">
+                <Button className="inline-flex items-center gap-2 px-8 py-6 border rounded-full bg-purple-600 text-white text-sm font-semibold shadow-none hover:border-purple-400 hover:border-1 hover:bg-white hover:text-purple-600 transition-all duration-300">
                   Get Started
                   <svg
                     className="w-4 h-4"
@@ -93,7 +93,7 @@ export default function Hero() {
 
               {/* Promotion Badge */}
               <div className="flex justify-center mb-12 animate-fade-scale opacity-0 animation-delay-400">
-                <span className="inline-flex items-center gap-2 text-base font-semibold text-purple-500">
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-purple-500">
                   🎁 50% off before 2025
                 </span>
               </div>
