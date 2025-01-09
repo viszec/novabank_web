@@ -104,6 +104,10 @@
   html, body {
     @apply overflow-x-hidden;
   }
+
+  html {
+    overflow-x: scroll;
+  }
 }
 
 @layer components {
@@ -517,3 +521,14 @@ section {
   background-color: var(--bg-purple-50, #F5F3FF);
   mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
 }
+
+/* hide scrollbar on desktop */
+@media screen and (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
+
+

@@ -109,8 +109,8 @@ export default function About() {
           WebkitMaskImage: "linear-gradient(to left, white, transparent)",
         }}
       />
-      
-      <div className="section-container py-24">
+
+      <div className="section-container pb-24">
         {/* Tech Stack Section */}
         <div 
           ref={techStackRef}

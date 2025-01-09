@@ -1,25 +1,37 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "../common/Logo";
+import { FOOTER_NAVIGATION } from "@/constants/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import type { AppRoute } from "@/types/navigation";
 
 export default function Footer() {
-  const footerLinks = {
-    Company: [
-      { label: "About", href: "/#about" },
-      { label: "Features", href: "/#features" },
-      { label: "Plans", href: "/#plans" },
-    ],
-    Support: [
-      { label: "Contact", href: "/contact" },
-      { label: "Help Center", href: "/#help-center" },
-    ],
-  };
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const socialLinks = [
-    { name: "X", href: "#" },
-    { name: "GitHub", href: "#" },
-    { name: "Discord", href: "#" },
-    { name: "Email", href: "#" },
-  ];
+  const handleSectionClick = async (href: AppRoute) => {
+    const sectionId = String(href).replace('/', '');
+    
+    // 如果不在首页，先导航到首页
+    if (pathname !== '/') {
+      await router.push('/');
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    const targetSection = document.getElementById(sectionId);
+    if (!targetSection) return;
+
+    const headerHeight = 96;
+    const targetPosition = targetSection.offsetTop - headerHeight;
+
+    window.history.replaceState({}, '', href);
+    
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <footer className="section-wrapper">
@@ -36,25 +48,43 @@ export default function Footer() {
 
           {/* Links Grid */}
           <div className="grid grid-cols-2 gap-8 mr-4">
-            {Object.entries(footerLinks).map(([category, links]) => (
-              <div key={category}>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  {category}
-                </h3>
-                <ul className="space-y-3">
-                  {links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="text-base text-gray-600 hover:text-purple-600 transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* Company Column */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                {FOOTER_NAVIGATION.company.title}
+              </h3>
+              <ul className="space-y-3">
+                {FOOTER_NAVIGATION.company.items.map((item) => (
+                  <li key={item.title}>
+                    <button
+                      onClick={() => handleSectionClick(item.href)}
+                      className="text-base text-gray-600 hover:text-purple-600 transition-colors"
+                    >
+                      {item.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support Column */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                {FOOTER_NAVIGATION.support.title}
+              </h3>
+              <ul className="space-y-3">
+                {FOOTER_NAVIGATION.support.items.map((item) => (
+                  <li key={item.title}>
+                    <Link
+                      href={item.href}
+                      className="text-base text-gray-600 hover:text-purple-600 transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -62,13 +92,15 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-4">
-              {socialLinks.map((link) => (
+              {FOOTER_NAVIGATION.social.items.map((item) => (
                 <Link
-                  key={link.name}
-                  href={link.href}
+                  key={item.title}
+                  href={item.href}
                   className="text-purple-600 hover:text-purple-400 transition-colors text-sm font-semibold"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {link.name}
+                  {item.title}
                 </Link>
               ))}
             </div>
@@ -76,18 +108,15 @@ export default function Footer() {
               © {new Date().getFullYear()} • Acorn Ledger All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
-              >
-                Terms of Service
-              </Link>
+              {FOOTER_NAVIGATION.legal.items.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                >
+                  {item.title}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

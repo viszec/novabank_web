@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Vignette corner gradient -->
+    <radialGradient id="cornerVignette" cx="0" cy="0" r="1">
+      <stop offset="0%" stop-color="#e9d5ff" stop-opacity="0.3"/>
+      <stop offset="70%" stop-color="#f9fafb" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#f9fafb" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Add clipPath for rounded corners -->
+    <clipPath id="roundedCorners">
+      <rect width="800" height="400" rx="20" ry="20"/>
+    </clipPath>
+    
+    <!-- Chart animation path -->
+    <path id="chartPath" d="M0,50 Q25,45 50,40 T100,30 T150,25 T200,20" 
+          fill="none" stroke="none"/>
+  </defs>
+  
+  <style>
+    .primary { fill: #9333ea; }
+    .secondary { fill: #e9d5ff; }
+    .accent { fill: #581c87; }
+    .light { fill: #f3e8ff; }
+    .white { fill: #ffffff; }
+    .gray-light { fill: #f3f4f6; }
+    .gray { fill: #9ca3af; }
+    
+    /* Slower floating animation - increased to 5s */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    
+    @keyframes dash {
+      to { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideRight {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes growLine {
+      from { stroke-dasharray: 0 1000; }
+      to { stroke-dasharray: 1000 0; }
+    }
+    
+    /* Updated animation durations */
+    .float { animation: float 5s ease-in-out infinite; }
+    .pulse { animation: pulse 3s ease-in-out infinite; }
+    .slide-in { animation: slideRight 0.8s ease-out forwards; }
+    .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    
+    .chart-line {
+      stroke: #9333ea;
+      stroke-width: 3;
+      stroke-linecap: round;
+      fill: none;
+      animation: growLine 2.5s ease-out forwards;
+    }
+    
+    .chart-area {
+      fill: url(#chartGradient);
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+  </style>
+
+  <!-- Background with rounded corners -->
+  <rect width="800" height="400" fill="#f9fafb" rx="20" ry="20"/>
+  
+  <!-- Vignette corner effects with clip path -->
+  <g opacity="1" clip-path="url(#roundedCorners)">
+    <!-- Top left corner -->
+    <path d="M0,0 L300,0 Q150,0 150,150 Q150,300 0,300 Z" fill="url(#cornerVignette)"/>
+    
+    <!-- Top right corner -->
+    <path d="M800,0 L500,0 Q650,0 650,150 Q650,300 800,300 Z" fill="url(#cornerVignette)"/>
+    
+    <!-- Bottom left corner -->
+    <path d="M0,400 L300,400 Q150,400 150,250 Q150,100 0,100 Z" fill="url(#cornerVignette)"/>
+    
+    <!-- Bottom right corner -->
+    <path d="M800,400 L500,400 Q650,400 650,250 Q650,100 800,100 Z" fill="url(#cornerVignette)"/>
+  </g>
+
+  <!-- Decorative floating circles -->
+  <g class="float" style="animation-delay: -0.5s">
+    <circle cx="100" cy="50" r="8" class="secondary" opacity="0.6"/>
+    <circle cx="105" cy="55" r="4" class="primary" opacity="0.4"/>
+  </g>
+  <g class="float" style="animation-delay: -1.5s">
+    <circle cx="720" cy="350" r="6" class="secondary" opacity="0.6"/>
+    <circle cx="725" cy="355" r="3" class="primary" opacity="0.4"/>
+  </g>
+  <g class="float" style="animation-delay: -1s">
+    <circle cx="650" cy="80" r="10" class="secondary" opacity="0.6"/>
+    <circle cx="655" cy="85" r="5" class="primary" opacity="0.4"/>
+  </g>
+
+  <!-- Left chat bubble group -->
+  <g class="float slide-in" style="animation-delay: -1s">
+    <rect x="50" y="120" width="280" height="160" rx="20" class="white" 
+          stroke="#e9d5ff" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(147, 51, 234, 0.1))"/>
+    <!-- Animated message lines -->
+    <g class="slide-in" style="animation-delay: 0.2s">
+      <rect x="80" y="140" width="180" height="10" rx="5" class="gray-light"/>
+    </g>
+    <g class="slide-in" style="animation-delay: 0.4s">
+      <rect x="80" y="160" width="220" height="10" rx="5" class="gray-light"/>
+    </g>
+    <g class="slide-in" style="animation-delay: 0.6s">
+      <rect x="80" y="180" width="160" height="10" rx="5" class="gray-light"/>
+    </g>
+    <!-- Financial data cards -->
+    <g class="pulse" style="animation-delay: 0.8s">
+      <rect x="80" y="210" width="100" height="40" rx="8" class="secondary"/>
+      <text x="130" y="235" text-anchor="middle" fill="white" font-size="14">+12.5%</text>
+    </g>
+    <g class="pulse" style="animation-delay: 1s">
+      <rect x="190" y="210" width="100" height="40" rx="8" class="primary"/>
+      <text x="240" y="235" text-anchor="middle" fill="white" font-size="14">$1,234</text>
+    </g>
+  </g>
+
+  <!-- Central app window -->
+  <g class="pulse">
+    <rect x="260" y="80" width="280" height="240" rx="20" class="white" 
+          stroke="#9333ea" stroke-width="2" filter="drop-shadow(0 8px 16px rgba(147, 51, 234, 0.15))"/>
+    <!-- App header -->
+    <rect x="260" y="80" width="280" height="40" rx="20" class="primary"/>
+    <circle cx="290" cy="100" r="8" class="white"/>
+    <circle cx="320" cy="100" r="8" class="white"/>
+    
+    <!-- Chart area with gradient -->
+    <defs>
+      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#9333ea" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#9333ea" stop-opacity="0"/>
+      </linearGradient>
+      
+      <!-- Bar chart gradient -->
+      <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e9d5ff" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#e9d5ff" stop-opacity="0.2"/>
+      </linearGradient>
+    </defs>
+    
+    <!-- Bar chart with animation -->
+    <g transform="translate(280, 180)">
+      <!-- Bars with staggered animation -->
+      <g class="slide-in" style="animation-delay: 0.2s">
+        <rect x="10" y="30" width="16" height="40" rx="4" fill="url(#barGradient)"/>
+      </g>
+      <g class="slide-in" style="animation-delay: 0.4s">
+        <rect x="60" y="20" width="16" height="50" rx="4" fill="url(#barGradient)"/>
+      </g>
+      <g class="slide-in" style="animation-delay: 0.6s">
+        <rect x="110" y="40" width="16" height="30" rx="4" fill="url(#barGradient)"/>
+      </g>
+      <g class="slide-in" style="animation-delay: 0.8s">
+        <rect x="160" y="15" width="16" height="55" rx="4" fill="url(#barGradient)"/>
+      </g>
+      <g class="slide-in" style="animation-delay: 1.0s">
+        <rect x="210" y="25" width="16" height="45" rx="4" fill="url(#barGradient)"/>
+      </g>
+    </g>
+
+    <!-- Animated line chart (on top of bars) -->
+    <g transform="translate(280, 180)">
+      <path class="chart-line" d="M0,50 C50,30 100,60 150,20 S200,40 240,10"
+            stroke-dasharray="1000"
+            stroke-dashoffset="1000"/>
+      <path class="chart-area" d="M0,50 C50,30 100,60 150,20 S200,40 240,10 V80 H0 Z"
+            opacity="0.3"/>
+    </g>
+    
+    <!-- Data points with pulse effect -->
+    <g class="pulse" style="animation-delay: 1.5s">
+      <circle cx="280" cy="230" r="4" class="primary"/>
+      <circle cx="400" cy="210" r="4" class="primary"/>
+      <circle cx="520" cy="190" r="4" class="primary"/>
+    </g>
+  </g>
+
+  <!-- Right chat bubble group -->
+  <g class="float slide-in" style="animation-delay: 0.5s">
+    <rect x="470" y="120" width="280" height="160" rx="20" class="white" 
+          stroke="#e9d5ff" stroke-width="2" filter="drop-shadow(0 4px 6px rgba(147, 51, 234, 0.1))"/>
+    
+    <!-- Animated message content -->
+    <g class="slide-in" style="animation-delay: 0.7s">
+      <rect x="500" y="140" width="200" height="10" rx="5" class="gray-light"/>
+    </g>
+    <g class="slide-in" style="animation-delay: 0.9s">
+      <rect x="500" y="160" width="180" height="10" rx="5" class="gray-light"/>
+    </g>
+    
+    <!-- Support icons with animations -->
+    <g class="pulse" style="animation-delay: 1.1s">
+      <circle cx="520" cy="200" r="20" class="secondary"/>
+      <path d="M515,200 L525,200 M520,195 L520,205" stroke="white" stroke-width="2"/>
+    </g>
+    <g class="pulse" style="animation-delay: 1.3s">
+      <circle cx="580" cy="200" r="20" class="primary"/>
+      <path d="M575,195 L585,205 M575,205 L585,195" stroke="white" stroke-width="2"/>
+    </g>
+    <g class="pulse" style="animation-delay: 1.5s">
+      <circle cx="640" cy="200" r="20" class="accent"/>
+      <path d="M635,195 Q640,205 645,195" stroke="white" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+
+
+  <!-- Floating financial symbols -->
+  <g class="float" style="animation-delay: -2s">
+    <circle cx="300" cy="300" r="15" class="primary"/>
+    <text x="300" y="305" text-anchor="middle" fill="white" font-size="12">$</text>
+  </g>
+  <g class="float" style="animation-delay: -1s">
+    <circle cx="500" cy="100" r="15" class="accent"/>
+    <text x="500" y="105" text-anchor="middle" fill="white" font-size="12">¢</text>
+  </g>
+</svg> 
