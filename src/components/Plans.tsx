@@ -1,8 +1,31 @@
 "use client";
 
 import React, { useState } from 'react';
-// import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
+
+// 动画变体
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
 
 export default function Plans() {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -52,9 +75,18 @@ export default function Plans() {
 
   return (
     <section id="plans" className="section-wrapper pt-28 pb-36 bg-gray-50">
-      <div className="section-container max-w-7xl mx-auto px-4">
+      <motion.div 
+        className="section-container max-w-7xl mx-auto px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          variants={cardVariants}
+        >
           <h2 className="text-4xl font-bold mb-4">Finding Our Plans and Pricing</h2>
           <p className="text-lg text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
 
@@ -74,15 +106,19 @@ export default function Plans() {
               <span className="text-xs px-2 py-1 bg-gray-50 text-purple-600 rounded">Popular</span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <motion.div 
+          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          variants={containerVariants}
+        >
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`bg-white rounded-2xl p-8 ${plan.isPopular ? 'border-2 border-purple-500 ring-1 ring-purple-500' : 'border border-gray-200'
-                }`}
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className={`bg-white rounded-2xl p-8 ${plan.isPopular ? 'border-2 border-purple-400 ring-1 ring-purple-400' : 'border border-gray-200'}`}
             >
               {plan.isPopular && (
                 <span className="inline-block px-3 py-1 bg-purple-500 text-white text-sm font-semibold rounded-full mb-4">
@@ -106,8 +142,8 @@ export default function Plans() {
                 </p>
                 <ul className="space-y-2">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-gray-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <li key={i} className="flex items-start gap-2">
+                      <svg className="w-4 h-4 text-purple-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-gray-600 text-sm">{feature}</span>
@@ -147,10 +183,10 @@ export default function Plans() {
                   />
                 </div>
               </div> */}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 } 

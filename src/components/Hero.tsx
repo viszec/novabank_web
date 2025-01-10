@@ -107,21 +107,21 @@ export default function Hero() {
                         key={name}
                         src={`https://api.dicebear.com/7.x/notionists/svg?seed=${name}`}
                         alt={`${name}'s avatar`}
-                        width={32}
-                        height={32}
-                        className="w-14 h-14 rounded-full bg-purple-50 border-2 border-white"
+                        width={26}
+                        height={26}
+                        className="w-12 h-12 rounded-full bg-purple-50 border-2 border-white"
                       />
                     ))}
                   </div>
-                  <div className="flex-col items-center gap-2 ml-2">
+                  <div className="flex-col items-center ml-2">
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-500 text-[27px]">
+                        <span key={i} className="text-yellow-500 text-[18px]">
                           ★
                         </span>
                       ))}
                     </div>
-                    <span className="text-sm text-gray-600 font-semibold">
+                    <span className="text-[10px] text-gray-600 font-semibold">
                       from 99+ happy users
                     </span>
                   </div>
