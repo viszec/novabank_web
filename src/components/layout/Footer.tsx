@@ -11,26 +11,51 @@ export default function Footer() {
   const pathname = usePathname();
 
   const handleSectionClick = async (href: AppRoute) => {
-    const sectionId = String(href).replace('/', '');
-    
-    // 如果不在首页，先导航到首页
+    // if not on home page, navigate to home page
     if (pathname !== '/') {
       await router.push('/');
       await new Promise(resolve => setTimeout(resolve, 100));
     }
 
+    const sectionId = String(href).replace('/#', '');
     const targetSection = document.getElementById(sectionId);
-    if (!targetSection) return;
+    
+    // retry mechanism: ensure section element is loaded
+    if (!targetSection) {
+      const maxRetries = 5;
+      let retryCount = 0;
+      
+      const findSection = setInterval(() => {
+        const section = document.getElementById(sectionId);
+        if (section || retryCount >= maxRetries) {
+          clearInterval(findSection);
+          if (section) {
+            const headerHeight = 96;
+            const targetPosition = section.offsetTop - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            // update URL, remove #
+            const cleanUrl = href === '/#home' ? '/' : (href as string).replace('/#', '/');
+            window.history.pushState({}, '', cleanUrl);
+          }
+        }
+        retryCount++;
+      }, 100);
+      return;
+    }
 
     const headerHeight = 96;
     const targetPosition = targetSection.offsetTop - headerHeight;
-
-    window.history.replaceState({}, '', href);
-    
     window.scrollTo({
       top: targetPosition,
       behavior: 'smooth'
     });
+
+    // update URL, remove #
+    const cleanUrl = href === '/#home' ? '/' : (href as string).replace('/#', '/');
+    window.history.pushState({}, '', cleanUrl);
   };
 
   return (
@@ -40,28 +65,37 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="mb-12">
             <Logo />
-            <p className="mt-4 text-base text-gray-600 max-w-[60%]">
+            <p className="mt-4 text-sm text-gray-600 max-w-[60%]">
               Your personal finance companion. Track, manage, and grow your
               wealth with smart insights and automated bookkeeping.
             </p>
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-2 gap-8 mr-4">
+          <div className="grid grid-cols-2 gap-8 mr-16">
             {/* Company Column */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-base font-semibold text-gray-900 mb-4">
                 {FOOTER_NAVIGATION.company.title}
               </h3>
               <ul className="space-y-3">
                 {FOOTER_NAVIGATION.company.items.map((item) => (
                   <li key={item.title}>
-                    <button
-                      onClick={() => handleSectionClick(item.href)}
-                      className="text-base text-gray-600 hover:text-purple-600 transition-colors"
-                    >
-                      {item.title}
-                    </button>
+                    {item.isSection ? (
+                      <button
+                        onClick={() => handleSectionClick(item.href)}
+                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                      >
+                        {item.title}
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                      >
+                        {item.title}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -69,7 +103,7 @@ export default function Footer() {
 
             {/* Support Column */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-base font-semibold text-gray-900 mb-4">
                 {FOOTER_NAVIGATION.support.title}
               </h3>
               <ul className="space-y-3">

@@ -16,6 +16,7 @@ import {
   MonitorSpeaker,
   Loader,
 } from "lucide-react";
+import { motion } from 'framer-motion';
 
 type IconType =
   | typeof LandmarkIcon
@@ -30,6 +31,27 @@ interface FeatureCard {
   description: string;
   icon: IconType;
 }
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
 
 export default function Featured() {
   const features: FeatureCard[] = [
@@ -73,7 +95,13 @@ export default function Featured() {
 
   return (
     <div id="features" className="pt-32 pb-20 grid-pattern-subtle">
-      <div className="featured-section-container">
+      <motion.div 
+        className="featured-section-container"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
         <Carousel
           opts={{
             align: "start",
@@ -81,7 +109,10 @@ export default function Featured() {
           }}
           className="w-full"
         >
-          <div className="flex justify-between items-center mb-16">
+          <motion.div 
+            className="flex justify-between items-center mb-16"
+            variants={itemVariants}
+          >
             <div className="flex flex-col gap-4 -ml-16">
               <h2 className="text-4xl font-bold mt-10">
                 Key Features of Acorn Ledger
@@ -95,7 +126,7 @@ export default function Featured() {
               <CarouselPrevious className="relative border-none text-purple-600 font-bold left-0 translate-x-0" />
               <CarouselNext className="relative border-none text-purple-600 font-bold right-0 translate-x-0" />
             </div>
-          </div>
+          </motion.div>
 
           <div className="relative w-full">
             <div className="flex justify-center">
@@ -105,7 +136,11 @@ export default function Featured() {
                     key={index}
                     className="flex-shrink-0 md:basis-1/3 lg:basis-1/4 h-[420px] mt-4"
                   >
-                    <div className="card-hover-wrapper h-[300px] pt-6 px-2">
+                    <motion.div 
+                      className="card-hover-wrapper h-[300px] pt-6 px-2"
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.03 }}
+                    >
                       <Card className="card-frame absolute inset-0 border border-purple-200" />
 
                       <CardContent className="card-content-inner relative z-10 h-full flex flex-col justify-center items-start">
@@ -121,14 +156,14 @@ export default function Featured() {
                           {feature.description}
                         </p>
                       </CardContent>
-                    </div>
+                    </motion.div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
             </div>
           </div>
         </Carousel>
-      </div>
+      </motion.div>
     </div>
   );
 }
