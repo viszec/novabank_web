@@ -61,7 +61,7 @@ export default function Footer() {
   return (
     <footer className="section-wrapper">
       <div className="section-container lg:py-16 py-8">
-        <div className="flex flex-col md:flex-row lg:justify-between justify-center lg:items-center lg:gap-20 gap-4 px-4">
+        <div className="flex flex-col md:flex-row lg:justify-between justify-center lg:items-center lg:gap-20 gap-4 px-4 lg:px-0">
           {/* Logo and Description */}
           <div className="mb-2 lg:mb-12">
             <Logo />
