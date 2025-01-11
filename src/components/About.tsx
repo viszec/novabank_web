@@ -100,7 +100,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-wrapper pt-32 pb-4 relative">
+    <section id="about" className="section-wrapper lg:pt-32 pt-12 pb-4 px-4 relative">
       {/* Background Grid Pattern - Right Half */}
       <div
         className="absolute right-0 w-1/3 h-1/5 inset-y-0 bg-[radial-gradient(#e4d5ff_2px,transparent_2px)] bg-[size:30px_30px]"
@@ -114,13 +114,15 @@ export default function About() {
         {/* Tech Stack Section */}
         <div 
           ref={techStackRef}
-          className={`text-center mb-20 opacity-0 ${
+          className={`text-center mb-10 md:mb-20 opacity-0 ${
             techStackInView ? 'animate-slide-up' : ''
           }`}
         >
-          <p className="mb-8 text-4xl font-bold">
-            <span className="font-garamond italic font-bold text-4xl text-purple-600">Acorn Ledger </span>
-            <span className="text-gray-700 text-3xl">
+          <p className="mb-4 md:mb-8 text-3xl md:text-4xl font-bold">
+            <span className="font-garamond italic font-bold text-3xl md:text-4xl text-purple-600">
+              Acorn Ledger 
+            </span>
+            <span className="text-gray-700 text-2xl md:text-3xl leading-tight">
               {" "}
               is built on the shoulders of giants
             </span>
@@ -145,15 +147,15 @@ export default function About() {
         <div className="section-container">
           <div 
             ref={whatIsRef}
-            className="grid md:grid-cols-2 gap-24 items-center pt-10 pb-32"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-24 items-center lg:pt-10 pb-12"
           >
-            <div className={`card-gradient rounded-2xl w-[580px] h-[400px] opacity-0 ${
+            <div className={`card-gradient rounded-2xl w-full h-auto md:w-[580px] md:h-[400px] opacity-0 ${
               whatIsInView ? 'animate-slide-in' : ''
             }`}>
               <Image
                 src="/images/whatIsAcorn.png"
                 alt="Acorn Robot"
-                className="w-full h-full object-cover rounded-2xl"
+                className="w-full h-auto object-cover lg:rounded-2xl rounded-xl"
                 width={580}
                 height={400}
                 loading="lazy"
@@ -162,24 +164,24 @@ export default function About() {
             <div className={`space-y-6 opacity-0 ${
               whatIsInView ? 'animate-slide-in animation-delay-200' : ''
             }`}>
-              <h2 className="text-2xl font-bold">
+              <h2 className="lg:text-2xl text-xl font-bold">
                 Redefining Personal Finance Management
               </h2>
-              <p className="text-gray-600 text-base">
+              <p className="text-gray-600 lg:text-base text-sm">
                 Acorn Ledger is a Next.js-powered financial management platform
                 that simplifies your banking experience. Built with modern
                 financial integration capabilities and enterprise-grade
                 security.
               </p>
-              <div className="space-y-4 border py-3 px-6 rounded-2xl bg-gray-50 border-white">
+              <div className="space-y-4 border py-3 lg:px-6 px-4 rounded-2xl bg-gray-50 border-white">
                 {features.map((feature) => (
                   <div key={feature.title} className="flex items-start gap-4">
                     {feature.icon}
                     <div>
-                      <h3 className="font-semibold text-sm mb-1">
+                      <h3 className="font-semibold lg:text-sm text-xs mb-1">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 lg:text-sm text-xs">
                         {feature.description}
                       </p>
                     </div>
@@ -192,32 +194,32 @@ export default function About() {
           {/* Why Choose Acorn Section */}
           <div 
             ref={whyChooseRef}
-            className="grid md:grid-cols-2 gap-12 items-center pb-28"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center lg:pb-28"
           >
             <div className={`space-y-6 opacity-0 ${
               whyChooseInView ? 'animate-slide-in' : ''
             }`}>
-              <div className="inline-block px-6 py-1 bg-white rounded-full border border-purple-600">
-                <span className="text-sm text-purple-600 font-semibold">
+              <div className="inline-block px-4 lg:px-6 lg:py-1 py-0.5 bg-white rounded-full border border-purple-600">
+                <span className="lg:text-sm text-xs text-purple-600 font-semibold">
                   Benefits
                 </span>
               </div>
-              <h2 className="text-2xl font-bold">
+              <h2 className="lg:text-2xl text-xl font-bold">
                 Experience Financial Freedom Like Never Before
               </h2>
-              <p className="text-gray-600 text-base">
+              <p className="text-gray-600 lg:text-base text-sm">
                 Experience modern financial management with a platform designed
                 for simplicity and efficiency.
               </p>
-              <div className="space-y-4 border py-3 px-6 rounded-2xl bg-gray-50 border-white">
+              <div className="space-y-4 border py-3 lg:px-6 px-4 rounded-2xl bg-gray-50 border-white">
                 {benefits.map((benefit) => (
                   <div key={benefit.title} className="flex items-start gap-4">
                     {benefit.icon}
                     <div>
-                      <h3 className="font-semibold text-sm mb-1">
+                      <h3 className="font-semibold lg:text-sm text-xs mb-1">
                         {benefit.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 lg:text-sm text-xs">
                         {benefit.description}
                       </p>
                     </div>
@@ -225,13 +227,13 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className={`card-gradient mt-14 rounded-2xl w-[560px] h-[400px] opacity-0 ${
+            <div className={`card-gradient mt-6 md:mt-14 rounded-2xl w-full h-auto md:w-[560px] md:h-[400px] opacity-0 ${
               whyChooseInView ? 'animate-slide-in animation-delay-200' : ''
             }`}>
               <Image
                 src="/images/whyChooseAcorn.jpg"
                 alt="Acorn City"
-                className="item-w-full h-full object-cover rounded-2xl"
+                className="w-full h-auto object-cover lg:rounded-2xl rounded-xl"
                 width={580}
                 height={400}
                 loading="lazy"

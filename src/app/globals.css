@@ -148,9 +148,21 @@
   }
   
   .logo-scroll {
-    @apply flex items-center gap-12 animate-scroll;
+    @apply flex items-center gap-8 lg:gap-12 animate-scroll;
     animation: scroll 30s linear infinite;
     width: fit-content;
+  }
+
+  .logo {
+    width: 42px;
+    height: 42px;
+  }
+  
+  @media (max-width: 768px) {
+    .logo {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
 
@@ -368,7 +380,7 @@
 }
 
 .card-hover-wrapper {
-  @apply relative transition-all duration-300 w-[320px];
+  @apply relative transition-all duration-300 lg:w-[320px] w-[280px];
 }
 
 .card-frame {

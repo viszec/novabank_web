@@ -60,38 +60,38 @@ export default function Footer() {
 
   return (
     <footer className="section-wrapper">
-      <div className="section-container py-16">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-20">
+      <div className="section-container lg:py-16 py-8">
+        <div className="flex flex-col md:flex-row lg:justify-between justify-center lg:items-center lg:gap-20 gap-4 px-4">
           {/* Logo and Description */}
-          <div className="mb-12">
+          <div className="mb-2 lg:mb-12">
             <Logo />
-            <p className="mt-4 text-sm text-gray-600 max-w-[60%]">
+            <p className="mt-4 lg:text-sm text-xs text-gray-600 lg:max-w-[60%] max-w-full">
               Your personal finance companion. Track, manage, and grow your
               wealth with smart insights and automated bookkeeping.
             </p>
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-2 gap-8 mr-16">
+          <div className="grid lg:grid-cols-2 lg:gap-8 gap-4 lg:mr-16 mr-4">
             {/* Company Column */}
             <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-4">
+              <h3 className="lg:text-base text-sm font-semibold text-gray-900 lg:mb-4 mb-2">
                 {FOOTER_NAVIGATION.company.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="lg:space-y-3 space-y-1">
                 {FOOTER_NAVIGATION.company.items.map((item) => (
                   <li key={item.title}>
                     {item.isSection ? (
                       <button
                         onClick={() => handleSectionClick(item.href)}
-                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                        className="lg:text-sm text-xs text-gray-600 hover:text-purple-600 transition-colors"
                       >
                         {item.title}
                       </button>
                     ) : (
                       <Link
                         href={item.href}
-                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                        className="lg:text-sm text-xs text-gray-600 hover:text-purple-600 transition-colors"
                       >
                         {item.title}
                       </Link>
@@ -103,15 +103,15 @@ export default function Footer() {
 
             {/* Support Column */}
             <div>
-              <h3 className="text-base font-semibold text-gray-900 mb-4">
+              <h3 className="lg:text-base text-sm font-semibold text-gray-900 lg:mb-4 mb-2">
                 {FOOTER_NAVIGATION.support.title}
               </h3>
-              <ul className="space-y-3">
+              <ul className="lg:space-y-3 space-y-1">
                 {FOOTER_NAVIGATION.support.items.map((item) => (
                   <li key={item.title}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-600 hover:text-purple-600 transition-colors"
+                      className="text-xs text-gray-600 hover:text-purple-600 transition-colors"
                     >
                       {item.title}
                     </Link>
@@ -123,9 +123,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
+        <div className="lg:mt-16 mt-4 pt-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center lg:gap-4 gap-2">
+            <div className="flex items-center lg:gap-4 gap-2">
               {FOOTER_NAVIGATION.social.items.map((item) => (
                 <Link
                   key={item.title}
@@ -138,10 +138,10 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="lg:text-sm text-xs text-gray-600">
               © {new Date().getFullYear()} • Acorn Ledger All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center lg:gap-6 gap-2">
               {FOOTER_NAVIGATION.legal.items.map((item) => (
                 <Link
                   key={item.title}

@@ -74,7 +74,7 @@ export default function Plans() {
   ];
 
   return (
-    <section id="plans" className="section-wrapper pt-28 pb-36 bg-gray-50">
+    <section id="plans" className="section-wrapper lg:pt-28 pt-16 lg:pb-36 pb-16 bg-gray-50">
       <motion.div 
         className="section-container max-w-7xl mx-auto px-4"
         initial="hidden"
@@ -87,30 +87,30 @@ export default function Plans() {
           className="text-center mb-12"
           variants={cardVariants}
         >
-          <h2 className="text-4xl font-bold mb-4">Finding Our Plans and Pricing</h2>
-          <p className="text-lg text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
+          <h2 className="lg:text-4xl text-2xl font-bold mb-4">Finding Our Plans and Pricing</h2>
+          <p className="lg:text-lg text-sm text-gray-600 ">Get all features of Acorn Ledger, Start your financial management journey.</p>
 
           {/* Toggle */}
           <div className="mt-8 inline-flex items-center bg-gray-200 rounded-lg p-1">
             <button
-              className={`px-4 py-2 text-sm rounded-lg ${!isAnnual ? 'bg-white shadow' : ''}`}
+              className={`px-4 lg:py-2 py-1 lg:text-sm text-xs rounded-lg ${!isAnnual ? 'bg-white shadow' : ''}`}
               onClick={() => setIsAnnual(false)}
             >
               Monthly
             </button>
             <button
-              className={`px-4 py-2 text-sm rounded-lg flex items-center gap-2 ${isAnnual ? 'bg-white shadow' : ''}`}
+              className={`px-4 lg:py-2 py-1 lg:text-sm text-xs rounded-lg flex items-center gap-2 ${isAnnual ? 'bg-white shadow' : ''}`}
               onClick={() => setIsAnnual(true)}
             >
               Annually
-              <span className="text-xs px-2 py-1 bg-gray-50 text-purple-600 rounded">Popular</span>
+              <span className="lg:text-xs text-xxs px-2 py-1 bg-gray-50 text-purple-600 rounded">Popular</span>
             </button>
           </div>
         </motion.div>
 
         {/* Cards */}
         <motion.div 
-          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          className="grid md:grid-cols-3 gap-8 lg:max-w-5xl mx-auto px-6"
           variants={containerVariants}
         >
           {plans.map((plan, index) => (
@@ -136,24 +136,24 @@ export default function Plans() {
               </div>
 
               <div className="mb-6">
-                <p className="font-medium mb-4 text-purple-800">
+                <p className="lg:font-medium font-normal text-sm mb-4 text-purple-800">
                   {plan.name === "Standard" ? "Everything in Starter, plus:" :
                     plan.name === "Premium" ? "Everything in Standard, plus:" : ""}
                 </p>
-                <ul className="space-y-2">
+                <ul className="lg:space-y-2 space-y-1">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <svg className="w-4 h-4 text-purple-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600 text-sm">{feature}</span>
+                      <span className="text-gray-600 lg:text-sm text-xs">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               <Button 
-                className={`w-[80%] mx-auto flex items-center justify-center py-5 text-sm font-semibold gap-2 rounded-full mb-6 ${
+                className={`w-[80%] mx-auto flex items-center justify-center lg:py-5 py-3 text-sm font-semibold gap-2 rounded-full lg:mb-6 mb-2 ${
                   plan.isPopular
                     ? 'bg-purple-500 text-white border-2 border-purple-500 hover:bg-white hover:text-purple-500 transition-all duration-300'
                     : 'border-2 bg-white text-purple-500 border-purple-400 hover:border-purple-800 hover:text-purple-500 hover:bg-white transition-all duration-300'
